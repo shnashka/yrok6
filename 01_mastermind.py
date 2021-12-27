@@ -46,6 +46,7 @@
 # TODO здесь ваш код...
 from mastermind_engine import start_print, get_number, check_number, game_over
 
+
 def user_number():
     while True:
         num = input('необходимо ввести 4 числа:')
@@ -56,27 +57,24 @@ def user_number():
 
 
 def game_start():
+    start_print()
     print('старт игры')
-    print(start_print())
     get_number()
-    motion =0
-        while True:
-            motion += 1
-            print(f"ход -  {motion}")
-            user_input = user_number()
-            res = check_number(user_input)
-            print(f"Быков - {res['bulls']}")
-            print(f"Коров - {res['cows']}")
-            _game_over = game_over(user_input)
-        
+    motion = 0
+    while True:
+        motion += 1
+        # print(f"ход -  {motion}")
+        user_input = user_number()
+        res = check_number(user_input)
+        print(f"Быков - {res['bulls']}")
+        print(f"Коров - {res['cows']}")
+        _game_over = game_over(user_input)
+        if _game_over:
+            print(f" угадали за {motion} шагов. Если хотите повторить - наберите страт")
+            return input()
 
 
 while 'страт' == game_start():
     pass
 
 print('Спасибо за игру!')
-
-
-
-
-

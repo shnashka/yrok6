@@ -1,7 +1,7 @@
 import random as r
 
 _number = []
-bulls, cows = 0, 0
+
 
 def start_print():
     print(
@@ -16,44 +16,46 @@ def start_print():
         'что и в задуманном числе\n',
         'Например, если задумано число 3275 и названо число 1234,\n',
         'получаем в названном числе одного «быка» и одну «корову».\n',
-        'Очевидно, что число отгадано в том случае, если имеем 4 «быка».\n\n'
-
+        'Очевидно, что число отгадано в том случае, если имеем 4 «быка».\n'
     )
 
 
 def get_number():
     result = []
-    random_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    random_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
-    num = random_list[r.random(1, 8)]
+    num = random_list[r.randint(0, 8)]
     random_list.remove(num)
     result.append(num)
 
-    num = random_list[r.random(0, 8)]
+    num = random_list[r.randint(0, 8)]
     random_list.remove(num)
     result.append(num)
 
-    num = random_list[r.random(0, 8)]
+    num = random_list[r.randint(0, 7)]
     random_list.remove(num)
     result.append(num)
 
-    num = random_list[r.random(0, 8)]
+    num = random_list[r.randint(0, 6)]
     random_list.remove(num)
     result.append(num)
 
     global _number
     _number = result
+
+
 def check_number(num):
-        user_list = [int(x) for x in num]
-        bulls = 0
-        cows = 0
-        for i in range(4):
-            if user_list[i] == _number[i]:
-                bulls += 1
-            elif user_list[i] in _number:
-                cows += 1
-        result = {'быки - ': bulls, 'коровы - ': cows}
-        return result
+    user_list = [int(x) for x in num]
+    bulls = 0
+    cows = 0
+    for i in range(4):
+        if user_list[i] == _number[i]:
+            bulls += 1
+        elif user_list[i] in _number:
+            cows += 1
+    result = {'bulls': bulls, 'cows': cows}
+    return result
+
 
 def game_over(num):
     user_input = [int(x) for x in num]
