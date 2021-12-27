@@ -66,8 +66,8 @@ def game_start():
         # print(f"ход -  {motion}")
         user_input = user_number()
         res = check_number(user_input)
-        print(f"Быков - {res['bulls']}")
-        print(f"Коров - {res['cows']}")
+        print(f"место - {res['bulls']}")
+        print(f"цыфра - {res['cows']}")
         _game_over = game_over(user_input)
         if _game_over:
             print(f" угадали за {motion} шагов. Если хотите повторить - наберите страт")

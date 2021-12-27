@@ -14,15 +14,20 @@ import simple_draw as sd
 # обращаясь ТОЛЬКО к функциям модуля snowfall
 
 # создать_снежинки(N)
+from cats import snowflake3, draw, move, get_num, remove, y
+
+snowflake3(25)
 while True:
-    #  нарисовать_снежинки_цветом(color=sd.background_color)
-    #  сдвинуть_снежинки()
-    #  нарисовать_снежинки_цветом(color)
-    #  если есть номера_достигших_низа_экрана() то
-    #       удалить_снежинки(номера)
-    #       создать_снежинки(count)
-    sd.sleep(0.1)
-    if sd.user_want_exit():
-        break
+    draw(sd.background_color)
+    move()
+    draw(sd.COLOR_WHITE)
+    fallen_angel = get_num()
+    if len(fallen_angel):
+        draw(sd.background_color)
+        remove(fallen_angel)
+        draw(sd.COLOR_WHITE)
+        snowflake3(len(fallen_angel), offset=y - 40)
+
+    sd.sleep(0.001)
 
 sd.pause()
